@@ -1,0 +1,488 @@
+openapi: 3.0.0
+info:
+  title: MyProject API
+  description: API for the my project server.
+  contact:
+    name: Binary Birds
+    url: https://binarybirds.com
+    email: info@binarybirds.com
+  version: 1.0.0
+tags:
+- name: Todo
+  description: Everything about todos...
+servers:
+- url: http://127.0.0.1:8080
+  description: dev
+- url: http://127.0.0.1:8081
+  description: live
+paths:
+  /todos:
+    get:
+      tags:
+      - Todo
+      summary: List todos
+      description: List available todos
+      operationId: listTodos
+      parameters:
+      - $ref: '#/components/parameters/pageLimit'
+      - $ref: '#/components/parameters/pageOffset'
+      - $ref: '#/components/parameters/orderAsc'
+      - $ref: '#/components/parameters/todoListSort'
+      - $ref: '#/components/parameters/todoListSearch'
+      responses:
+        200:
+          description: List of todos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TodoList'
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+      security:
+      - bearerAuth: []
+    post:
+      tags:
+      - Todo
+      summary: Create a todo
+      description: Creates a new todo
+      operationId: createTodo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TodoCreate'
+      responses:
+        200:
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TodoDetail'
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+      security:
+      - bearerAuth: []
+    delete:
+      tags:
+      - Todo
+      summary: Bulk delete todos
+      description: Removes multiple tags at once
+      operationId: deleteTodos
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+                format: uuid
+                description: Unique identifier
+                example: 7B8154FE-C507-4810-8EAF-5AB30B90EC89
+              maxItems: 1000
+      responses:
+        204:
+          $ref: '#/components/responses/204'
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+      security:
+      - bearerAuth: []
+  /todos/{todoId}:
+    get:
+      tags:
+      - Todo
+      summary: Todo details
+      description: Get the details of a todo
+      operationId: getTodo
+      parameters:
+      - $ref: '#/components/parameters/todoId'
+      responses:
+        200:
+          description: The details of a todo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TodoDetail'
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+      security:
+      - bearerAuth: []
+    put:
+      tags:
+      - Todo
+      summary: Update a todos
+      description: Updates a todo
+      operationId: updateTodo
+      parameters:
+      - $ref: '#/components/parameters/todoId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TodoUpdate'
+      responses:
+        200:
+          description: The details of the updated todo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TodoDetail'
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+      security:
+      - bearerAuth: []
+    delete:
+      tags:
+      - Todo
+      summary: Delete a todo
+      description: Removes a todo using an id
+      operationId: deleteTodo
+      parameters:
+      - $ref: '#/components/parameters/todoId'
+      responses:
+        204:
+          $ref: '#/components/responses/204'
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+      security:
+      - bearerAuth: []
+    head:
+      tags:
+      - Todo
+      summary: Todo head
+      description: The details of a todo
+      operationId: headTodo
+      parameters:
+      - $ref: '#/components/parameters/todoId'
+      responses:
+        200:
+          description: The details of a todo
+          headers:
+            Content-Length:
+              schema:
+                type: integer
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+      security:
+      - bearerAuth: []
+    patch:
+      tags:
+      - Todo
+      summary: Patch a todo
+      description: Patch a given todo
+      operationId: patchTodo
+      parameters:
+      - $ref: '#/components/parameters/todoId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TodoPatch'
+      responses:
+        200:
+          description: The details of the patched todo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TodoDetail'
+        400:
+          $ref: '#/components/responses/400'
+        401:
+          $ref: '#/components/responses/401'
+        403:
+          $ref: '#/components/responses/403'
+        404:
+          $ref: '#/components/responses/404'
+      security:
+      - bearerAuth: []
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+          example: 1
+        message:
+          type: string
+          description: The user facing error message
+          example: Something went wrong with the request.
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              key:
+                type: string
+                description: The error key
+                example: field
+              message:
+                type: string
+                description: The user facing error message
+                example: Something is wrong with the field.
+            required:
+            - key
+            - message
+          maxItems: 1000
+      required:
+      - code
+      - message
+      - details
+    PageMetadata:
+      type: object
+      properties:
+        items:
+          type: integer
+          default: 50
+          description: Number of items per page
+          example: 10
+          maximum: 1000
+          minimum: 10
+        current:
+          type: integer
+          default: 1
+          description: The current page number
+          example: 1
+          minimum: 1
+        total:
+          type: integer
+          default: 0
+          description: Number of total pages
+          example: 42
+          minimum: 0
+      required:
+      - items
+      - current
+      - total
+    TodoList:
+      type: object
+      properties:
+        page:
+          $ref: '#/components/schemas/PageMetadata'
+        data:
+          type: object
+          properties:
+            elements:
+              type: array
+              items:
+                $ref: '#/components/schemas/TodoListItem'
+              maxItems: 1000
+            count:
+              type: integer
+              default: 0
+              description: Number of total elements
+              example: 420
+              minimum: 0
+          required:
+          - elements
+          - count
+      required:
+      - page
+      - data
+    TodoListItem:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier
+          example: 7B8154FE-C507-4810-8EAF-5AB30B90EC89
+        title:
+          type: string
+          description: Title of the todo item
+          example: Get milk
+      required:
+      - id
+      - title
+    TodoReference:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier
+          example: 7B8154FE-C507-4810-8EAF-5AB30B90EC89
+        title:
+          type: string
+          description: Title of the todo item
+          example: Get milk
+      required:
+      - id
+      - title
+    TodoDetail:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier
+          example: 7B8154FE-C507-4810-8EAF-5AB30B90EC89
+        title:
+          type: string
+          description: Title of the todo item
+          example: Get milk
+      required:
+      - id
+      - title
+    TodoCreate:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Title of the todo item
+          example: Get milk
+      required:
+      - title
+    TodoUpdate:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Title of the todo item
+          example: Get milk
+      required:
+      - title
+    TodoPatch:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Title of the todo item
+          example: Get milk
+  responses:
+    204:
+      description: No content
+    400:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    401:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    403:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    404:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    todoId:
+      name: todoId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+        description: Unique identifier
+        example: 7B8154FE-C507-4810-8EAF-5AB30B90EC89
+    todoListSearch:
+      name: search
+      in: query
+      schema:
+        type: string
+        description: Title of the todo item
+        example: Get milk
+      description: Search term for a todo item, partial match the title field
+    todoListSort:
+      name: sort
+      in: query
+      schema:
+        type: string
+        enum:
+        - title
+        default: title
+        example: title
+      description: Sort of the list
+    pageOffset:
+      name: pageOffset
+      in: query
+      schema:
+        type: integer
+        default: 1
+        title: pageOffset
+        example: 1
+        minimum: 1
+      description: The offset of the current page number
+    pageLimit:
+      name: pageLimit
+      in: query
+      schema:
+        type: integer
+        default: 50
+        title: pageLimit
+        example: 10
+        minimum: 1
+      description: Limit the number of items per page
+    orderAsc:
+      name: order
+      in: query
+      schema:
+        type: string
+        enum:
+        - asc
+        - desc
+        default: asc
+        example: asc
+      description: Order the results ascending or descending
+    orderDesc:
+      name: order
+      in: query
+      schema:
+        type: string
+        enum:
+        - asc
+        - desc
+        default: desc
+        example: desc
+      description: Order the results ascending or descending
+  securitySchemes:
+    bearerAuth:
+      description: Authorization header using a Bearer token
+      type: http
+      scheme: bearer
+      bearerFormat: token

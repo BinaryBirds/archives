@@ -1,0 +1,50 @@
+.heroSection {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 600px;
+  overflow: hidden;
+  width: 100%;
+  background-color: #fff;
+  padding: 80px 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 960px;
+}
+
+.heroTitle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 80px;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 24px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.backgroundImage {
+}
+
+@media (prefers-color-scheme: dark) {
+  .heroSection {
+    background-color: var(--secondary-color-950);
+  }
+}

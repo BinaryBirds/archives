@@ -1,0 +1,191 @@
+:root {
+  --primary-color-50: #fff8ec;
+  --primary-color-100: #ffefd3;
+  --primary-color-200: #ffdba5;
+  --primary-color-300: #ffc06d;
+  --primary-color-400: #ff9932;
+  --primary-color-500: #ff7b0a;
+  --primary-color-600: #ff6201;
+  --primary-color-700: #cc4502;
+  --primary-color-800: #a1360b;
+  --primary-color-900: #822f0c;
+  --primary-color-950: #461504;
+
+  --secondary-color-white: #ffffff;
+  --secondary-color-50: #f7f7f7;
+  --secondary-color-100: #ededed;
+  --secondary-color-200: #e0e0e0;
+  --secondary-color-300: #b3b3b3;
+  --secondary-color-400: #999999;
+  --secondary-color-500: #858585;
+  --secondary-color-600: #737373;
+  --secondary-color-700: #666666;
+  --secondary-color-800: #525252;
+  --secondary-color-900: #404040;
+  --secondary-color-950: #212121;
+  --secondary-color-black: #000000;
+
+  --error-color-50: #fff0f0;
+  --error-color-100: #ffdddd;
+  --error-color-200: #ffc0c0;
+  --error-color-300: #ff9494;
+  --error-color-400: #ff5757;
+  --error-color-500: #ff2323;
+  --error-color-600: #ff0000;
+  --error-color-700: #d70000;
+  --error-color-800: #b10303;
+  --error-color-900: #920a0a;
+  --error-color-950: #500000;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--secondary-color-50);
+  color: var(--secondary-color-900);
+  /* font-family: 'Roboto'; */
+}
+
+main {
+  overflow-x: auto;
+  min-height: 50vh;
+}
+
+p {
+  font-size: 20px;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  height: 33px;
+  border: 1px solid var(--secondary-color-200);
+  padding: 5px 15px;
+  border-radius: 8px;
+  background-color: var(--secondary-color-white);
+  font-family: 'Cormorant';
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+button:hover {
+  text-decoration: none;
+}
+
+button:visited {
+  text-decoration: none;
+}
+
+button:disabled {
+  border-color: var(--secondary-color-200);
+  color: var(--secondary-color-700);
+  background-color: var(--secondary-color-200);
+  cursor: not-allowed;
+}
+
+a,
+a:hover,
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+.input {
+  font: inherit;
+  box-sizing: border-box;
+  font-size: 18px;
+  width: 100%;
+  margin: 10px 0 20px;
+  padding: 5px 5px 5px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--secondary-color-200);
+  color: var(--secondary-color-900);
+}
+
+.input:focus {
+  outline: none;
+  border: 1px solid #ff62014d;
+  box-shadow: 0 0 5px 1px #ff62014d;
+}
+
+.primaryButton {
+  font-weight: bold;
+  height: 33px;
+  border: 1px solid var(--primary-color-600);
+  background-color: var(--primary-color-100);
+  color: var(--primary-color-600);
+}
+
+.primaryButton:hover {
+  background-color: var(--primary-color-600);
+  color: var(--secondary-color-white);
+}
+
+.primaryButton:disabled {
+  border-color: var(--secondary-color-200);
+  color: var(--secondary-color-700);
+  background-color: var(--secondary-color-200);
+}
+
+.secondaryButton {
+  height: 33px;
+  border: 1px solid var(--secondary-color-700);
+  color: var(--secondary-color-700);
+  background-color: var(--secondary-color-white);
+}
+
+.secondaryButton:hover {
+  color: var(--secondary-color-black);
+  background-color: var(--secondary-color-100);
+}
+
+.secondaryButton:disabled {
+  border-color: var(--secondary-color-200);
+  color: var(--secondary-color-700);
+  background-color: var(--secondary-color-200);
+}
+
+.deleteButton {
+  height: 33px;
+  border: 1px solid var(--error-color-700);
+  background-color: var(--error-color-100);
+  color: var(--error-color-700);
+}
+
+.deleteButton:hover {
+  background-color: #ff0000;
+  border-color: red;
+  color: var(--secondary-color-white);
+}
+
+/**-----------------------------------------------------------------------------
+** Media Queries
+**----------------------------------------------------------------------------*/
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--secondary-color-950);
+    color: var(--secondary-color-300);
+  }
+
+  .input {
+    color: var(--secondary-color-white);
+    background-color: var(--secondary-color-900);
+    border-color: var(--secondary-color-700);
+  }
+
+  button:disabled {
+    background-color: var(--secondary-color-900);
+    border-color: var(--secondary-color-700);
+    color: var(--secondary-color-600);
+  }
+}

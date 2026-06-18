@@ -1,0 +1,109 @@
+.header {
+  padding: 16px 0;
+  height: 64px;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  background-color: #ffffffe6;
+  z-index: 20;
+  /* box-shadow: #ff62011a 0px 10px 12px -3px, #ff62010a 0px 5px 5px -3px; */
+  backdrop-filter: blur(8px);
+  /* border-bottom: 1px solid #d0d5dd; */
+}
+
+.nav {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo a,
+.logo a:visited,
+.logo a:hover {
+  text-decoration: none;
+  color: inherit;
+  text-decoration: none;
+}
+
+.company {
+  font-size: 18px;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navigation ul {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.menuItem {
+  text-decoration: none;
+  /* font-weight: bold; */
+  color: inherit;
+}
+
+.login {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  background-color: inherit;
+  cursor: pointer;
+  color: var(--primary-color-600);
+}
+
+.login:hover {
+  color: var(--primary-color-400);
+  text-decoration: none;
+}
+
+.login:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+.getStarted {
+  height: 32px;
+  border: 1px solid var(--primary-color-500);
+  padding: 5px 15px;
+  border-radius: 16px;
+  background-color: var(--primary-color-500);
+  color: var(--secondary-color-white);
+  margin-right: 20px;
+  font-family: 'Cormorant';
+  font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.getStarted:hover {
+  background-color: var(--primary-color-600);
+  border-color: var(--primary-color-600);
+  text-decoration: none;
+}
+
+.getStarted:visited {
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .header {
+    background-color: #21212180;
+  }
+}

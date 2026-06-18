@@ -1,0 +1,44 @@
+.content {
+  width: 95%;
+  max-width: 960px;
+  margin: 50px auto;
+}
+
+.imageContainer {
+  box-sizing: border-box;
+  position: relative;
+  margin: 10px auto;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.image {
+  position: relative !important;
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.markdown :not(pre) {
+  line-height: 1.8;
+}
+
+.markdown pre * {
+  line-height: normal;
+  font-size: 18px;
+}
+
+.markdown * {
+  font-size: 22px;
+}
+
+.markdown a,
+.markdown a:visited {
+  color: var(--primary-color-600);
+}
+
+.markdown a:hover {
+  color: var(--primary-color-500);
+}
