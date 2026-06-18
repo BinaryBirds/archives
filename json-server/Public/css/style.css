@@ -1,0 +1,252 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	background: var(--primary-background-color);
+	color: var(--primary-text-color);
+    font-family: ui-rounded, "SF Pro Rounded", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+h1 {
+    font-size: 48px;
+    font-weight: lighter;
+    margin-bottom: 16px;
+    color: var(--secondary-text-color);
+}
+h1 b {
+    font-weight: bold;
+    color: var(--blue-color);
+}
+h2 {
+    color: var(--blue-color);
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+h3 {
+    color: var(--blue-color);
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+h4 {
+    color: #666;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+a {
+    color: var(--blue-color);
+}
+body > header {
+	text-align: center;
+	max-width: 800px;
+	margin: 128px auto;
+}
+.wrapper {
+    padding: 16px;
+    background: var(--secondary-background-color);
+}
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+footer {
+	padding: 64px;
+	text-align: center;
+}
+.endpoint {
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    margin-bottom: 12px;
+}
+.endpoint > header {
+    position: relative;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 8px;
+}
+.endpoint > header:hover {
+    cursor: pointer;
+}
+.endpoint > header img {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+.endpoints + .group-info {
+    margin-top: 64px;
+}
+.group-info {
+    margin-bottom: 16px;
+}
+.endpoint .details-wrapper {
+    border-top: 1px solid var(--border-color);
+}
+.endpoint .details {
+    padding: 16px;
+}
+.endpoint .details header {
+    margin-bottom: 16px;
+}
+textarea.original-code {
+    visibility: hidden;
+    display: none;
+}
+.content-block {
+    margin-top: 16px;
+    margin-bottom: 32px;
+}
+.object header {
+    background: var(--secondary-background-color);
+    padding: 16px 12px;
+    margin-bottom: 1px !important;
+}
+.object header h5 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+.object header p {
+    color: var(--secondary-text-color);
+}
+pre {
+    padding: 16px;
+    overflow-x: scroll;
+    background: var(--secondary-background-color);
+}
+pre code {
+    line-height: 1.4em;
+    font-size: 14px;
+    overflow-x: auto;
+    white-space: pre;
+    -webkit-overflow-scrolling: touch;
+}
+pre code .highlight {
+    display: inline-block;
+    padding: 0 4px 2px 4px;
+    border: 1px solid #546AFF;
+    border-radius: 5px;
+    background-color: #1A1721;
+    margin-left: -5px;
+}
+pre code .highlight.shifted {
+    margin-left: 0;
+}
+.method {
+    text-transform: uppercase;
+    background: black;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-right: 4px;
+    font-size: 12px;
+    line-height: 24px;
+}
+.method.get {
+    background: var(--blue-color);
+}
+.method.post {
+    background: var(--green-color);
+}
+.method.put {
+    background: var(--orange-color);
+}
+.method.patch {
+    background: var(--purple-color);
+}
+.method.delete {
+    background: var(--red-color);
+}
+.response-codes li, .parameters li {
+    background: var(--secondary-background-color);
+    position: relative;
+    list-style-type: none;
+    padding: 12px;
+    margin-bottom: 1px;
+}
+.httpStatus2xx {
+    border-left: 4px solid var(--green-color);
+}
+.httpStatus3xx, .httpStatus4xx {
+    border-left: 4px solid var(--yellow-color);
+}
+.httpStatus5xx {
+    border-left: 4px solid var(--red-color);
+}
+.response-codes .reason, .parameters .description {
+    display: block;
+    margin-top: 8px;
+    margin-left: 10px;
+    color: var(--secondary-text-color);
+}
+.parameters .required {
+    font-weight: bold;
+}
+span.type.uuid { color: var(--green-color); }
+span.type.string { color: var(--orange-color); }
+span.type.bool { color: var(--purple-color); }
+span.type.int { color: var(--blue-color); }
+span.type.double { color: var(--blue-color); }
+span.type.array { color: var(--black-color); }
+span.type.object { color: var(--black-color); }
+.tab button {
+    font-size: 14px;
+    display: inline-block;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 8px 12px;
+    margin-right: 2px;
+    background-color: var(--secondary-background-color);
+    color: #999;
+    transition: 0.3s;
+}
+.tab button:hover {
+    background-color: var(--primary-background-color);
+    color: var(--blue-color);
+}
+.tab button.active {
+    background-color: var(--primary-background-color);
+    color: var(--primary-text-color);
+}
+.tabcontent {
+    position: relative;
+    background: var(--primary-background-color);
+    padding: 16px;
+    display: none;
+}
+.tabcontent.first {
+    display: block;
+}
+.copy-button {
+    position: absolute;
+    top: 60px;
+    right: 22px;
+    padding: 8px 16px;
+    border: none;
+    background: var(--primary-background-color);
+    color: var(--primary-text-color);
+    font-weight: bold;
+    width: 80px;
+    text-transform: uppercase;
+}
+.copy-button:hover {
+    cursor: pointer;
+}
+.details-wrapper {
+    display: none;
+}
+.global-info {
+    margin-top: 32px;
+}
+
+@media screen and (min-width: 480px) {
+    .tab button {
+        padding: 8px 16px;
+        font-size: 16px;
+        margin-right: 4px;
+    }
+    .endpoint > header {
+        font-size: 20px;
+    }
+    .endpoint .method {
+        font-size: 16px;
+    }
+}
